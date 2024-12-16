@@ -8,10 +8,11 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { EScreens, whiteList } from '@/app/navigation'
 
 import { EColors } from '@/shared/lib'
-import { useAnimatedTab, useTabs } from '@/shared/lib/hooks/tab'
 import { Icon } from '@/shared/ui'
 
 import { Container, ButtonTab, Dot } from './styles'
+import { useAnimatedTab } from './useAnimatedTab'
+import { useTabs } from './useTabs'
 
 import type { TOnPressTab, TStacksKeys } from './types'
 
