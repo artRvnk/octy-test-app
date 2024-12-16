@@ -4,12 +4,12 @@ import { NavigationContainer } from '@react-navigation/native'
 
 import { theme } from './config'
 import { Navigation } from './ref'
-import { MarketsStack } from './stacks'
+import { MainTab } from './tabs'
 
 export const Navigator = () => {
   return (
     <NavigationContainer ref={Navigation.ref} theme={theme}>
-      <MarketsStack />
+      <MainTab />
     </NavigationContainer>
   )
 }

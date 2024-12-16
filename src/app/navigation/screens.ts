@@ -1,4 +1,6 @@
 export enum EScreens {
-  MarketsMain = 'MarketsMain',
-  MarketsSingle = 'MarketsSingle',
+  HomeMain = 'HomeMain',
+  HomeSingle = 'HomeSingle',
+
+  FavoritesMain = 'FavoritesMain',
 }

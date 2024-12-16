@@ -1,3 +1,4 @@
 export enum EStacks {
-  Markets = 'MarketsStack',
+  Home = 'HomeStack',
+  Favorites = 'FavoritesStack',
 }
