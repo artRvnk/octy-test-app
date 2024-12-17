@@ -12,8 +12,8 @@ export type TStatus = {
 export type TSetStatePayload<TInitialState = {}> = Partial<TInitialState>
 
 export enum EStoreReducer {
+  coin = 'coin',
   favorite = 'favorite',
-  currency = 'currency',
 }
 
 export type TSagaResponse<Res = unknown> = AxiosResponse<Res>

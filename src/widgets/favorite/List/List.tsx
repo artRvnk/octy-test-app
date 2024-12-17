@@ -9,7 +9,7 @@ import { TAB_HEIGHT } from '@/widgets/tab/Bottom'
 
 import { FavoriteFeature } from '@/features/favorite'
 
-import { CurrencyEntity, TCurrency } from '@/entities/currency'
+import { CoinEntity, TCoin } from '@/entities/coin'
 import { getFavoriteSelector } from '@/entities/favorite'
 
 import { EColors } from '@/shared/lib'
@@ -23,9 +23,9 @@ export const List = () => {
 
   const { favorites } = useTypedSelector(getFavoriteSelector)
 
-  const renderItem: ListRenderItem<TCurrency> = ({ item }) => {
+  const renderItem: ListRenderItem<TCoin> = ({ item }) => {
     return (
-      <CurrencyEntity.Card
+      <CoinEntity.Card
         {...{ item }}
         favoriteAction={
           <FavoriteFeature.Button {...{ item }} favSymbol={item.symbol} />
@@ -42,7 +42,7 @@ export const List = () => {
     return (
       <EmptyWrapper>
         <FlexWrapper flexDirection="column">
-          <Icon name="Currency" size={100} />
+          <Icon name="Coin" size={100} />
 
           <Typography.Body1R mTop="24px" align="center" color={EColors.gray}>
             {t('favorites.empty_list')}

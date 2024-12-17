@@ -3,7 +3,7 @@ import { Image } from 'react-native'
 
 import { Row, Typography } from '@/shared/ui/styled'
 
-import { TCurrency } from '../../models'
+import { TCoin } from '../../models'
 
 import * as S from './styles'
 
@@ -11,7 +11,7 @@ export const Card = ({
   item,
   favoriteAction,
 }: {
-  item: TCurrency
+  item: TCoin
   favoriteAction: React.ReactElement
 }) => {
   return (

@@ -1,6 +1,6 @@
-import { TCurrency } from '@/entities/currency'
+import { TCoin } from '@/entities/coin'
 
 export type TButtonProps = {
-  item: TCurrency
+  item: TCoin
   favSymbol?: string
 }

@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 
 import { useTranslation } from 'react-i18next'
 
-import { CurrencyWidget } from '@/widgets/currency'
+import { CoinWidget } from '@/widgets/coin'
 import { Header } from '@/widgets/header'
 
 export const Main = () => {
@@ -18,7 +18,7 @@ export const Main = () => {
         // onPress={callAlert}
       />
 
-      <CurrencyWidget.List />
+      <CoinWidget.List />
     </>
   )
 }

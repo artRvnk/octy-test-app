@@ -1,6 +1,6 @@
-import { TCurrency } from '@/entities/currency'
+import { TCoin } from '@/entities/coin'
 
 export type TInitialState = {
   loading: boolean
-  favorites: TCurrency[]
+  favorites: TCoin[]
 }

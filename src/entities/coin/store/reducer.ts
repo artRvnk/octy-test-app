@@ -10,7 +10,7 @@ const initialState: TInitialState = {
 }
 
 export const slice = createSlice({
-  name: EStoreReducer.currency,
+  name: EStoreReducer.coin,
   initialState,
   reducers: {
     setState: Reducers.setState<TInitialState>(),

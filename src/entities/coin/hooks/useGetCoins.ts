@@ -2,33 +2,33 @@ import { useState } from 'react'
 
 import { captureException } from '@sentry/react-native'
 
-import { CryptoData, TCurrency } from '../models'
-import { CurrencyService } from '../services'
+import { CryptoData, TCoin } from '../models'
+import { CoinService } from '../services'
 
 import { usePagination } from './usePagination'
 
-const convertDataToArray = (data: CryptoData): TCurrency[] => {
+const convertDataToArray = (data: CryptoData): TCoin[] => {
   return Object.values(data)
 }
 
-export const useGetCurrencies = () => {
-  const [currencies, setCurrencies] = useState<TCurrency[]>([])
+export const useGetCoins = () => {
+  const [currencies, setCoins] = useState<TCoin[]>([])
   const [loading, setLoading] = useState(false)
 
-  const getCurrencies = async () => {
+  const getCoins = async () => {
     setLoading(true)
 
     try {
-      const response = await CurrencyService.getCurrencies({})
+      const response = await CoinService.getCoins({})
 
-      //   console.log('CurrencyService.getCurrencies', response)
+      //   console.log('CoinService.getCoins', response)
 
       const data = response.data
 
       const cryptoData = convertDataToArray(data.crypto)
-      console.log('CurrencyService.cryptoData', cryptoData)
+      console.log('CoinService.cryptoData', cryptoData)
 
-      setCurrencies(cryptoData)
+      setCoins(cryptoData)
     } catch (e) {
       captureException(e)
     }
@@ -38,7 +38,7 @@ export const useGetCurrencies = () => {
 
   const paginationProps = usePagination({
     loading,
-    getAction: getCurrencies,
+    getAction: getCoins,
     items: currencies,
   })
 

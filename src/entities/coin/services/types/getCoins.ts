@@ -2,7 +2,7 @@ import { TPayload } from '@/shared/api'
 
 import { CryptoData, FiatData } from '../../models'
 
-export type TGetCurrenciesPayload = TPayload<TRequest, TResponse>
+export type TGetCoinsPayload = TPayload<TRequest, TResponse>
 
 type TRequest = {}
 

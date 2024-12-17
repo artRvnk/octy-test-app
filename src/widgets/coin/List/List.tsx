@@ -8,21 +8,11 @@ import {
 
 import { useTranslation } from 'react-i18next'
 
-import { useTypedSelector } from '@/app/store'
-
 import { TAB_HEIGHT } from '@/widgets/tab/Bottom'
-
-// import { NoteFeature } from '@/features/note'
-// import { NoteEntity, TNote, useGetNotes } from '@/entities/note'
-// import { getUserSelector } from '@/entities/user'
 
 import { FavoriteFeature } from '@/features/favorite'
 
-import {
-  CurrencyEntity,
-  TCurrency,
-  useGetCurrencies,
-} from '@/entities/currency'
+import { CoinEntity, TCoin, useGetCoins } from '@/entities/coin'
 
 import { EColors } from '@/shared/lib'
 import { Icon } from '@/shared/ui'
@@ -33,16 +23,15 @@ import { EmptyWrapper, styles } from './styles'
 export const List = () => {
   const { t } = useTranslation()
 
-  const { data, getFirstPage, isFirstLoad, refresh, refreshing } =
-    useGetCurrencies()
+  const { data, getFirstPage, isFirstLoad, refresh, refreshing } = useGetCoins()
 
   useEffect(() => {
     getFirstPage?.()
   }, [])
 
-  const renderItem: ListRenderItem<TCurrency> = ({ item }) => {
+  const renderItem: ListRenderItem<TCoin> = ({ item }) => {
     return (
-      <CurrencyEntity.Card
+      <CoinEntity.Card
         {...{ item }}
         favoriteAction={<FavoriteFeature.Button {...{ item }} />}
       />
@@ -58,7 +47,7 @@ export const List = () => {
       return (
         <EmptyWrapper>
           <FlexWrapper flexDirection="column">
-            <Icon name="Currency" size={100} />
+            <Icon name="Coin" size={100} />
 
             <Typography.Body1R mTop="24px" align="center" color={EColors.gray}>
               {t('coins.empty_list')}
@@ -75,24 +64,22 @@ export const List = () => {
   }
 
   return (
-    <>
-      <FlatList
-        data={data.slice(0, 7)}
-        renderItem={renderItem}
-        keyExtractor={item => item.symbol}
-        ListEmptyComponent={renderEmpty}
-        ListFooterComponent={renderLoader}
-        showsVerticalScrollIndicator={false}
-        ItemSeparatorComponent={() => <Divider height={12} />}
-        contentContainerStyle={styles.list}
-        refreshControl={
-          <RefreshControl
-            onRefresh={refresh}
-            refreshing={!!refreshing}
-            tintColor={EColors.primary_300}
-          />
-        }
-      />
-    </>
+    <FlatList
+      data={data.slice(0, 7)}
+      renderItem={renderItem}
+      keyExtractor={item => item.symbol}
+      ListEmptyComponent={renderEmpty}
+      ListFooterComponent={renderLoader}
+      showsVerticalScrollIndicator={false}
+      ItemSeparatorComponent={() => <Divider height={12} />}
+      contentContainerStyle={styles.list}
+      refreshControl={
+        <RefreshControl
+          onRefresh={refresh}
+          refreshing={!!refreshing}
+          tintColor={EColors.primary_300}
+        />
+      }
+    />
   )
 }

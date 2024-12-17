@@ -1,4 +1,4 @@
-export type TCurrency = {
+export type TCoin = {
   symbol: string
   name: string
   name_full: string
@@ -7,9 +7,9 @@ export type TCurrency = {
 }
 
 export interface CryptoData {
-  [key: string]: TCurrency
+  [key: string]: TCoin
 }
 
 export interface FiatData {
-  [currencyCode: string]: string
+  [coinCode: string]: string
 }

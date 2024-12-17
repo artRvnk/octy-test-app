@@ -4,4 +4,4 @@ export * from './hooks'
 
 import { Card } from './ui'
 
-export const CurrencyEntity = { Card }
+export const CoinEntity = { Card }

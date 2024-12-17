@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Reducers } from '@/app/store/tools'
 import { EStoreReducer } from '@/app/store/types'
 
-import { TCurrency } from '@/entities/currency'
+import { TCoin } from '@/entities/coin'
 
 import { TInitialState } from './types'
 
@@ -19,7 +19,7 @@ export const slice = createSlice({
     setState: Reducers.setState<TInitialState>(),
     clearState: Reducers.clearState<TInitialState>(initialState),
 
-    addFavorite: (state, { payload }: PayloadAction<TCurrency>) => {
+    addFavorite: (state, { payload }: PayloadAction<TCoin>) => {
       state.favorites = [payload, ...state.favorites]
     },
     deleteFavorite: (state, { payload }: PayloadAction<string>) => {

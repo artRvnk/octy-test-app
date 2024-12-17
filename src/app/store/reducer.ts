@@ -1,11 +1,11 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import { currencyReducer } from '@/entities/currency'
+import { coinReducer } from '@/entities/coin'
 import { favoriteReducer } from '@/entities/favorite'
 
 import { EStoreReducer } from './types'
 
 export default combineReducers({
   [EStoreReducer.favorite]: favoriteReducer,
-  [EStoreReducer.currency]: currencyReducer,
+  [EStoreReducer.coin]: coinReducer,
 })

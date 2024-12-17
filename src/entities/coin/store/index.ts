@@ -1,4 +1,4 @@
-export { default as currencyReducer } from './reducer'
+export { default as coinReducer } from './reducer'
 
 export * from './actions'
 export * from './saga'
