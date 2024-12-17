@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import {
   ActivityIndicator,
   FlatList,
@@ -7,6 +7,8 @@ import {
 } from 'react-native'
 
 import { useTranslation } from 'react-i18next'
+
+import { ConnectionContext } from '@/app/context'
 
 import { TAB_HEIGHT } from '@/widgets/tab/Bottom'
 
@@ -23,11 +25,13 @@ import { EmptyWrapper, styles } from './styles'
 export const List = () => {
   const { t } = useTranslation()
 
+  const { connected } = useContext(ConnectionContext)
+
   const { data, getFirstPage, isFirstLoad, refresh, refreshing } = useGetCoins()
 
   useEffect(() => {
-    getFirstPage?.()
-  }, [])
+    connected && getFirstPage?.()
+  }, [connected])
 
   const renderItem: ListRenderItem<TCoin> = ({ item }) => {
     return (

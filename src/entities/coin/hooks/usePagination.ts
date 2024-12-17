@@ -1,4 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+
+import { ConnectionContext } from '@/app/context'
 
 export type TPaginationGetAction = (
   skip: number,
@@ -25,6 +27,8 @@ export const usePagination = ({
 }: TUsePagination): TPaginationReturn => {
   const [refreshing, setRefreshing] = useState(false)
 
+  const { connected } = useContext(ConnectionContext)
+
   const isFirstLoad = useMemo(
     () => !!loading && !refreshing && !items?.length,
     [loading, refreshing, items?.length],
@@ -33,6 +37,7 @@ export const usePagination = ({
   // Get first page
   const getFirstPage = useCallback(
     (activeGlobalLoader?: boolean) => {
+      // console.log('getAction')
       getAction(0, activeGlobalLoader)
     },
     [getAction],
@@ -40,6 +45,8 @@ export const usePagination = ({
 
   // Refresh
   const refresh = useCallback(() => {
+    if (!connected) return
+
     setRefreshing(true)
     getFirstPage()
   }, [getFirstPage])

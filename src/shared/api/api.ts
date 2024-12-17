@@ -36,8 +36,9 @@ privateInstance.interceptors.request.use(
       return config
     } catch (error) {
       if (axios.isCancel(error)) {
-        console.log('Request canceled due to no internet connection.')
-        return new Promise(() => {})
+        return Promise.reject(
+          new Error('Request canceled due to no internet connection.'),
+        )
       }
 
       return Promise.reject(error)
