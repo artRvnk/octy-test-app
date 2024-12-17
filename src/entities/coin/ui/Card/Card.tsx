@@ -1,34 +1,40 @@
 import React from 'react'
 import { Image } from 'react-native'
 
+import { EScreens } from '@/app/navigation'
+
+import { useNavigation } from '@/shared/lib'
 import { Row, Typography } from '@/shared/ui/styled'
 
 import { TCoin } from '../../models'
 
 import * as S from './styles'
 
-export const Card = ({
-  item,
-  favoriteAction,
-}: {
+type TCardProps = {
   item: TCoin
   favoriteAction: React.ReactElement
-}) => {
-  return (
-    <>
-      <S.Wrapper>
-        <Row style={S.styles.row}>
-          <Image source={{ uri: item.icon_url }} style={S.styles.image} />
+}
 
-          <Typography.Body1SB
-            mLeft="12px"
-            numberOfLines={1}
-            style={S.styles.text}>
-            {item.name}
-          </Typography.Body1SB>
-        </Row>
-        {favoriteAction}
-      </S.Wrapper>
-    </>
+export const Card = ({ item, favoriteAction }: TCardProps) => {
+  const { navigate } = useNavigation()
+
+  const onNavigate = () => {
+    navigate(EScreens.HomeSingle, { coin: item })
+  }
+
+  return (
+    <S.Wrapper onPress={onNavigate}>
+      <Row style={S.styles.row}>
+        <Image source={{ uri: item.icon_url }} style={S.styles.image} />
+
+        <Typography.Body1SB
+          mLeft="12px"
+          numberOfLines={1}
+          style={S.styles.text}>
+          {item.name}
+        </Typography.Body1SB>
+      </Row>
+      {favoriteAction}
+    </S.Wrapper>
   )
 }

@@ -30,7 +30,11 @@ export const List = () => {
   const { data, getFirstPage, isFirstLoad, refresh, refreshing } = useGetCoins()
 
   useEffect(() => {
-    connected && getFirstPage?.()
+    // connected && getFirstPage?.()
+    if (connected) {
+      console.log('getFirstPage')
+      getFirstPage?.()
+    }
   }, [connected])
 
   const renderItem: ListRenderItem<TCoin> = ({ item }) => {

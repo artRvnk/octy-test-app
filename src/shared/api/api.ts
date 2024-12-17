@@ -20,7 +20,8 @@ const privateInstance = axios.create({
 privateInstance.interceptors.request.use(
   async config => {
     try {
-      await checkInternetConnection()
+      // TODO - get back
+      // await checkInternetConnection()
 
       const accessKey = API_KEY
 
@@ -31,11 +32,14 @@ privateInstance.interceptors.request.use(
 
       return config
     } catch (error) {
-      if (axios.isCancel(error)) {
-        return Promise.reject(
-          new Error('Request canceled due to no internet connection.'),
-        )
-      }
+      // if (axios.isCancel(error)) {
+      //   // TODO - fix Promise
+      //   return Promise.resolve(config)
+
+      //   // return Promise.reject(
+      //   //   new Error('Request canceled due to no internet connection.'),
+      //   // )
+      // }
 
       return Promise.reject(error)
     }

@@ -1,4 +1,4 @@
-import { TPayload } from '@/shared/api'
+import { TPayload, TQueryErrorData } from '@/shared/api'
 
 import { CryptoData, FiatData } from '../../models'
 
@@ -8,6 +8,6 @@ type TRequest = {}
 
 type TResponse = {
   success: boolean
-  crypto: CryptoData
-  fiat: FiatData
-}
+  crypto?: CryptoData
+  fiat?: FiatData
+} & Partial<TQueryErrorData>

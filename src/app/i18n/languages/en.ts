@@ -1,9 +1,4 @@
 export default {
-  main: {
-    title_line_1: 'Welcome to Octy Test App',
-    title_line_2: 'Created by Artem Revenko',
-  },
-
   coins: {
     title: 'Coins',
     empty_list: 'You do not have any coins yet',
@@ -32,4 +27,11 @@ export default {
   loading: 'Loading...',
 
   no_wifi: 'No Internet Connection',
+
+  max_supply: 'Max supply',
+
+  privacy_policy: 'Privacy Policy',
+  terms_and_conditions: 'Terms of Use',
+
+  live_rate: 'The current {{symbol}} rate is {{rate}} {{fiat}}',
 }

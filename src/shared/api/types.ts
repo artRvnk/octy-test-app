@@ -14,8 +14,7 @@ export type TPayload<TRequest, TResp> = {
 export type TQueryErrorData = {
   error: {
     code: string
-    name: string
-    param: string
+    info: string
     type: string
   }
 }

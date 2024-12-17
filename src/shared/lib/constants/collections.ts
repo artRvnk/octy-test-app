@@ -1,5 +1,4 @@
-// TODO
-export enum ECollection {
-  users = 'users',
-  notes = 'notes',
+export type TData = {
+  key: string
+  value: string
 }
