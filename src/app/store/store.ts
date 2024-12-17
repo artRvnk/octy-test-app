@@ -8,7 +8,7 @@ import rootReducer from './reducer'
 import rootSaga from './saga'
 import { EStoreReducer } from './types'
 
-const whitelist: string[] = [EStoreReducer.user]
+const whitelist: string[] = [EStoreReducer.favorite]
 
 const persistedReducer = persistReducer(
   {

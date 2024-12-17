@@ -1,8 +1,8 @@
 import { put, takeLatest } from 'redux-saga/effects'
 
-import { userActions } from './actions'
+import { favoriteActions } from './actions'
 import { ActionsTypes } from './constants'
 
 function* logOut() {}
 
-export function* userWatcher() {}
+export function* favoriteWatcher() {}

@@ -11,7 +11,6 @@ import type {
   NativeStackScreenProps,
 } from '@react-navigation/native-stack'
 
-// TMainTab optional
 export type TScreens = THomeStack & TFavoritesStack & TMainTab
 
 /**

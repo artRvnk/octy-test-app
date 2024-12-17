@@ -1,4 +1,4 @@
-export { default as userReducer } from './reducer'
+export { default as favoriteReducer } from './reducer'
 
 export * from './actions'
 export * from './saga'

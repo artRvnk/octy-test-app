@@ -12,7 +12,7 @@ export type TStatus = {
 export type TSetStatePayload<TInitialState = {}> = Partial<TInitialState>
 
 export enum EStoreReducer {
-  user = 'user',
+  favorite = 'favorite',
   currency = 'currency',
 }
 

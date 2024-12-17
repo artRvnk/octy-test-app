@@ -1,3 +1,7 @@
 export * from './store'
+export * from './models'
+export * from './hooks'
 
-export const CurrencyEntity = {}
+import { Card } from './ui'
+
+export const CurrencyEntity = { Card }

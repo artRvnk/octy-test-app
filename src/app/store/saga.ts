@@ -1,10 +1,10 @@
 import { all } from 'redux-saga/effects'
 
 import { currencyWatcher } from '@/entities/currency'
-import { userWatcher } from '@/entities/user'
+import { favoriteWatcher } from '@/entities/favorite'
 
 function* rootSaga() {
-  yield all([userWatcher(), currencyWatcher()])
+  yield all([favoriteWatcher(), currencyWatcher()])
 }
 
 export default rootSaga
