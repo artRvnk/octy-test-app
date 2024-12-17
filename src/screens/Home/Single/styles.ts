@@ -7,12 +7,10 @@ import { WP } from '@/shared/tools'
 import { Typography } from '@/shared/ui/styled'
 
 export const Wrapper = styled(View)`
-  /* background-color: red; */
   margin-left: 16px;
 `
 
 export const Bottom = styled(View)`
-  /* background-color: red; */
   margin-top: auto;
 `
 

@@ -27,6 +27,7 @@ export const List = () => {
     return (
       <CoinEntity.Card
         {...{ item }}
+        isFavorite
         favoriteAction={
           <FavoriteFeature.Button {...{ item }} favSymbol={item.symbol} />
         }

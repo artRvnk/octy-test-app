@@ -2,7 +2,7 @@ export default {
   coins: {
     title: 'Coins',
     empty_list: 'You do not have any coins yet',
-    clear: 'Do you want to clear local store?',
+    clear: 'Do you want to clear local coins?',
   },
 
   favorites: {
@@ -13,14 +13,6 @@ export default {
 
   yes: 'Yes',
   no: 'No',
-
-  button: {
-    confirm: 'Confirm',
-    cancel: 'Cancel',
-
-    show_more: 'Show more',
-    show_less: 'Show less',
-  },
 
   warning: 'Warning',
   success: 'Success',

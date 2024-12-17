@@ -42,7 +42,6 @@ export const ConnectionProvider = ({ children }: TChildrenContext) => {
 
   useEffect(() => {
     NetInfo.addEventListener(networkState => {
-      // console.log('networkState', networkState)
       changeConnectionStatus(networkState?.isInternetReachable ?? true)
     })
   }, [])

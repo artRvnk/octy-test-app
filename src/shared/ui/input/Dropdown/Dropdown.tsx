@@ -20,7 +20,6 @@ export const Dropdown = ({ data, onChange }: TDropdownProps) => {
       <Container>
         <SelectList
           setSelected={(val: SetStateAction<string>) => {
-            // console.log(val)
             onChange(val)
           }}
           data={data}

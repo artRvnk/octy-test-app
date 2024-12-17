@@ -43,7 +43,6 @@ export const useGetCoins = () => {
 
     try {
       const response = await CoinService.getCoins({})
-
       // console.log('CoinService.getCoins', response)
 
       const data = response.data
@@ -62,7 +61,7 @@ export const useGetCoins = () => {
 
         if (!!data.fiat && !fiatData.length) {
           const dataFiat = convertFiat(data.fiat)
-          console.log('CoinService.dataFiat', dataFiat)
+          // console.log('CoinService.dataFiat', dataFiat)
 
           dispatch(coinActions.setFiatData(dataFiat))
         }
@@ -72,7 +71,7 @@ export const useGetCoins = () => {
         callToast({ message: data?.error?.info })
       }
     } catch (e) {
-      console.log('CoinService.e', e)
+      // console.log('CoinService.getCoins e', e)
 
       if (isAxiosError(e)) {
         if (e.code === 'ERR_NETWORK') {
@@ -95,9 +94,6 @@ export const useGetCoins = () => {
     getAction: getCoins,
     items: currencies,
   })
-
-  console.log('CoinService-currencies', currencies)
-  console.log('CoinService-coins', coins)
 
   return {
     data: connected ? currencies : coins,

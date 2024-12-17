@@ -35,7 +35,7 @@ export const useGetLiveRate = ({
       // console.log('CoinService.getLiveRate', response)
 
       const data = response.data
-      console.log('CoinService.getLiveRate', data)
+      // console.log('CoinService.getLiveRate', data)
 
       setFiat(data)
 
@@ -43,7 +43,7 @@ export const useGetLiveRate = ({
         callToast({ message: data?.error?.info })
       }
     } catch (e) {
-      console.log('CoinService.e', e)
+      // console.log('CoinService.getLiveRate e', e)
 
       if (isAxiosError(e)) {
         if (e.code === 'ERR_NETWORK') {

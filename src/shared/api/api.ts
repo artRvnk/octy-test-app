@@ -5,7 +5,7 @@ import axios from 'axios'
 const checkInternetConnection = async () => {
   const networkState = await NetInfo.fetch()
 
-  if (!networkState?.isInternetReachable) {
+  if (!networkState?.isConnected) {
     throw new axios.Cancel('No Internet Connection!')
   }
 }
@@ -20,7 +20,6 @@ const privateInstance = axios.create({
 privateInstance.interceptors.request.use(
   async config => {
     try {
-      // TODO - get back
       await checkInternetConnection()
 
       const accessKey = API_KEY
@@ -33,9 +32,6 @@ privateInstance.interceptors.request.use(
       return config
     } catch (error) {
       if (axios.isCancel(error)) {
-        // TODO - fix Promise
-        // return Promise.resolve(config)
-
         return Promise.reject(
           new Error('Request canceled due to no internet connection.'),
         )
@@ -51,8 +47,6 @@ privateInstance.interceptors.request.use(
 
 privateInstance.interceptors.response.use(
   response => {
-    // console.log('ApiProvider-RESPONSE', response?.request?.__sentry_xhr_v3__)
-
     return response
   },
   async error => {

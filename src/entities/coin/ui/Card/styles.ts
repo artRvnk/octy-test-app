@@ -28,6 +28,5 @@ export const styles = StyleSheet.create({
   },
   row: {
     flex: 1,
-    // backgroundColor: 'red',
   },
 })

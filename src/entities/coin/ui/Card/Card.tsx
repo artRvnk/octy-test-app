@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Image } from 'react-native'
 
 import { ConnectionContext } from '@/app/context'
-import { EScreens } from '@/app/navigation'
+import { EScreens, EStacks } from '@/app/navigation'
 
 import { useNavigation } from '@/shared/lib'
 import { Row, Typography } from '@/shared/ui/styled'
@@ -14,15 +14,27 @@ import * as S from './styles'
 type TCardProps = {
   item: TCoin
   favoriteAction: React.ReactElement
+  isFavorite?: boolean
 }
 
-export const Card = ({ item, favoriteAction }: TCardProps) => {
+export const Card = ({ item, favoriteAction, isFavorite }: TCardProps) => {
   const { navigate } = useNavigation()
 
   const { connected } = useContext(ConnectionContext)
 
   const onNavigate = () => {
     if (!connected) return
+
+    if (isFavorite) {
+      navigate(EStacks.Home, {
+        screen: EScreens.HomeSingle,
+        params: {
+          coin: item,
+        },
+      })
+      return
+    }
+
     navigate(EScreens.HomeSingle, { coin: item })
   }
 

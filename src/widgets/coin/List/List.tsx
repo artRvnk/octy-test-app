@@ -30,11 +30,7 @@ export const List = () => {
   const { data, getFirstPage, isFirstLoad, refresh, refreshing } = useGetCoins()
 
   useEffect(() => {
-    // connected && getFirstPage?.()
-    if (connected) {
-      console.log('getFirstPage')
-      getFirstPage?.()
-    }
+    connected && getFirstPage?.()
   }, [connected])
 
   const renderItem: ListRenderItem<TCoin> = ({ item }) => {
@@ -74,7 +70,6 @@ export const List = () => {
   return (
     <FlatList
       data={data}
-      // data={data.slice(0, 7)}
       renderItem={renderItem}
       keyExtractor={item => item.symbol}
       ListEmptyComponent={renderEmpty}

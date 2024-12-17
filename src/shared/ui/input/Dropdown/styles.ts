@@ -28,8 +28,6 @@ export const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: EColors.neutral_400,
     backgroundColor: EColors.neutral_500,
-    top: 40,
-    position: 'absolute',
   },
   dropdownItem: {},
   dropdownText: {

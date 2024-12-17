@@ -37,7 +37,6 @@ export const usePagination = ({
   // Get first page
   const getFirstPage = useCallback(
     (activeGlobalLoader?: boolean) => {
-      console.log('getAction')
       getAction(0, activeGlobalLoader)
     },
     [getAction],
