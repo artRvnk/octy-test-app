@@ -1,9 +1,18 @@
 import { API_KEY, BASE_API } from '@env'
-import axios from 'axios'
+import NetInfo from '@react-native-community/netinfo'
+import axios, { InternalAxiosRequestConfig } from 'axios'
 
 import { store } from '@/app/store'
 
 // import { FirebaseService, userActions } from '@/entities/user'
+
+const checkInternetConnection = async () => {
+  const networkState = await NetInfo.fetch()
+
+  if (!networkState?.isInternetReachable) {
+    throw new axios.Cancel('No Internet Connection!')
+  }
+}
 
 const privateInstance = axios.create({
   baseURL: BASE_API,
@@ -14,22 +23,25 @@ const privateInstance = axios.create({
 
 privateInstance.interceptors.request.use(
   async config => {
-    const accessKey = API_KEY
+    try {
+      await checkInternetConnection()
 
-    // const token = await FirebaseService.getToken()
+      const accessKey = API_KEY
 
-    // if (token && config.headers) {
-    //   config.headers.Authorization = 'Bearer ' + token
-    // }
-    // console.log('config: ', config)
-    // console.log('token: ', token)
+      config.params = {
+        ...(config.params || {}),
+        access_key: accessKey,
+      }
 
-    config.params = {
-      ...(config.params || {}),
-      access_key: accessKey,
+      return config
+    } catch (error) {
+      if (axios.isCancel(error)) {
+        console.log('Request canceled due to no internet connection.')
+        return new Promise(() => {})
+      }
+
+      return Promise.reject(error)
     }
-
-    return config
   },
   error => {
     return Promise.reject(error)

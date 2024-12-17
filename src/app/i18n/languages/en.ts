@@ -30,4 +30,6 @@ export default {
   error: 'Error',
   attention: 'Attention',
   loading: 'Loading...',
+
+  no_wifi: 'No Internet Connection',
 }

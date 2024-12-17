@@ -14,7 +14,9 @@ export const Context = ({ children }: TContext) => {
         <C.LanguageProvider>
           <C.ToastProvider>
             <C.LoaderProvider>
-              <>{children}</>
+              <C.ConnectionProvider>
+                <>{children}</>
+              </C.ConnectionProvider>
             </C.LoaderProvider>
           </C.ToastProvider>
         </C.LanguageProvider>

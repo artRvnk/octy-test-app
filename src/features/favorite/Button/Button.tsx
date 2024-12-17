@@ -20,7 +20,7 @@ export const Button = ({ item, favSymbol }: TButtonProps) => {
   const favoriteId = favSymbol || item.symbol
 
   const isFavorite =
-    !!favSymbol || favorites.some(fav => fav.symbol === favoriteId)
+    !!favSymbol || favorites.some(el => el.symbol === favoriteId)
 
   const handleFavorite = () => {
     if (isFavorite) {
