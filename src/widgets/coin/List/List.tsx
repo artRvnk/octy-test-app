@@ -69,7 +69,8 @@ export const List = () => {
 
   return (
     <FlatList
-      data={data.slice(0, 7)}
+      data={data}
+      // data={data.slice(0, 7)}
       renderItem={renderItem}
       keyExtractor={item => item.symbol}
       ListEmptyComponent={renderEmpty}
@@ -82,6 +83,8 @@ export const List = () => {
           onRefresh={refresh}
           refreshing={!!refreshing}
           tintColor={EColors.primary_300}
+          colors={[EColors.primary_300]}
+          progressBackgroundColor={EColors.neutral_400}
         />
       }
     />
