@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
   image: {
     borderRadius: 100,
     aspectRatio: 1,
-    height: WP(42.5),
+    height: WP(35),
     backgroundColor: EColors.neutral_300,
   },
 })

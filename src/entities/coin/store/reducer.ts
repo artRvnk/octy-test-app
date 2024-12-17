@@ -5,12 +5,15 @@ import { EStoreReducer } from '@/app/store/types'
 
 import { TData } from '@/shared/lib'
 
+import { TCoin } from '../models'
+
 import { TInitialState } from './types'
 
 const initialState: TInitialState = {
   loading: false,
 
   fiatData: [],
+  coins: [],
 }
 
 export const slice = createSlice({
@@ -25,6 +28,13 @@ export const slice = createSlice({
     },
     clearFiatData: state => {
       state.fiatData = []
+    },
+
+    setCoins: (state, { payload }: PayloadAction<TCoin[]>) => {
+      state.coins = payload
+    },
+    clearCoins: state => {
+      state.coins = []
     },
   },
 })

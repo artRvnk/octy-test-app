@@ -2,11 +2,13 @@ export default {
   coins: {
     title: 'Coins',
     empty_list: 'You do not have any coins yet',
+    clear: 'Do you want to clear local store?',
   },
 
   favorites: {
     title: 'Favorites',
     empty_list: 'You have not added any coins to your favorites list yet',
+    clear: 'Do you want to clear favorites?',
   },
 
   yes: 'Yes',

@@ -16,3 +16,4 @@ export { default as HeartEmpty } from './sources/heart_empty.svg'
 export { default as HeartFilled } from './sources/heart_filled.svg'
 
 export { default as WifiOff } from './sources/wifi_off.svg'
+export { default as Bin } from './sources/bin.svg'

@@ -1,11 +1,10 @@
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 
 import { captureException } from '@sentry/react-native'
 import { isAxiosError } from 'axios'
 import { useTranslation } from 'react-i18next'
 import { useDispatch } from 'react-redux'
 
-import { ConnectionContext } from '@/app/context'
 import { useTypedSelector } from '@/app/store'
 
 import { TData, usePagination, useToast } from '@/shared/lib'
@@ -29,14 +28,12 @@ export const useGetCoins = () => {
   const { t } = useTranslation()
   const dispatch = useDispatch()
 
-  const { connected } = useContext(ConnectionContext)
-
   const [currencies, setCoins] = useState<TCoin[]>([])
   const [loading, setLoading] = useState(false)
 
   const { callToast } = useToast()
 
-  const { fiatData, coins } = useTypedSelector(getCoinSelector)
+  const { fiatData } = useTypedSelector(getCoinSelector)
 
   const getCoins = async () => {
     setLoading(true)
@@ -44,7 +41,7 @@ export const useGetCoins = () => {
     try {
       const response = await CoinService.getCoins({})
 
-      // console.log('CoinService.getCoins', response)
+      console.log('CoinService.getCoins', response)
 
       const data = response.data
 
@@ -54,10 +51,6 @@ export const useGetCoins = () => {
           // console.log('CoinService.cryptoData', cryptoData)
 
           setCoins(cryptoData)
-
-          if (!coins.length) {
-            dispatch(coinActions.setCoins(cryptoData))
-          }
         }
 
         if (!!data.fiat && !fiatData.length) {
@@ -96,11 +89,8 @@ export const useGetCoins = () => {
     items: currencies,
   })
 
-  console.log('CoinService-currencies', currencies)
-  console.log('CoinService-coins', coins)
-
   return {
-    data: connected ? currencies : coins,
+    data: currencies,
     ...paginationProps,
   }
 }

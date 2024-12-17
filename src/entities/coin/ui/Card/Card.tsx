@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Image } from 'react-native'
 
+import { ConnectionContext } from '@/app/context'
 import { EScreens } from '@/app/navigation'
 
 import { useNavigation } from '@/shared/lib'
@@ -18,7 +19,10 @@ type TCardProps = {
 export const Card = ({ item, favoriteAction }: TCardProps) => {
   const { navigate } = useNavigation()
 
+  const { connected } = useContext(ConnectionContext)
+
   const onNavigate = () => {
+    if (!connected) return
     navigate(EScreens.HomeSingle, { coin: item })
   }
 
