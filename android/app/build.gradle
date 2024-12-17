@@ -82,8 +82,10 @@ android {
         applicationId "com.octytest"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
+        
         versionCode 1
-        versionName "1.0"
+        versionName "0.1"
+        archivesBaseName = "OCTY-v${versionCode}_${versionName}"
     }
     signingConfigs {
         debug {

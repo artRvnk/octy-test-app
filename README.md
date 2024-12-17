@@ -1,79 +1,64 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Overview of the app and its purpose
 
-# Getting Started
+Application created by **Artem Revenko** using React Native. The app **OctyTest** is a test task for [Octy](https://djinni.co/jobs/?company=octyapps-60b83) company. It is designed to display cryptocurrency coins, add and remove coins to favorites, and track their prices at a given time.
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+# Technical description
 
-## Step 1: Start the Metro Server
+## App architecture and design choices
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+The FSD architecture was used to create the application. Feature-Sliced Design (FSD) is an architectural methodology for scaffolding front-end applications. Simply put, it's a compilation of rules and conventions on organizing code. The main purpose of this methodology is to make the project more understandable and structured in the face of ever-changing business requirements.
 
-To start Metro, run the following command from the _root_ of your React Native project:
-
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
+There are currently six layers (from top to bottom):
 
 ```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
+1. app — everything that makes the app run — routing, entrypoints, global styles, providers
+2. screens — full pages or large parts of a page in nested routing
+3. widgets — large self-contained chunks of functionality or UI, usually delivering an entire use case
+4. features — reused implementations of entire product features, i.e. actions that bring business value to the user
+5. entities — business entities that the project works with, like user or product
+6. shared — reusable functionality, especially when it's detached from the specifics of the project/business, though not necessarily
 ```
 
-### For iOS
+The design of the application is made in black, stylistically simple, and intuitive. There are no unnecessary elements, only minimalism and practicality.
 
-```bash
-# using npm
-npm run ios
+## Description of app structure and major components
 
-# OR using Yarn
-yarn ios
-```
+The application contains a bottom navigation with the main screens.
+The first screen contains a header with a name and an alert button. The alert function is to clear the local coins (checking the offline mod) or cancel the action.
+The second screen also contains a header with a name and an alert button. The alert function is to clear the favorite coins or cancel the action.
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+### Home screen
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+The main part is occupied by a list of cryptocurrency coins. Each element contains an image and the name of the coin. You can add (or remove) a coin to your favorites by clicking on the button with the heart icon on the right side of the item.
+Clicking on a currency item takes you to another screen where all the information about the cryptocurrency is displayed.
+The bottom menu has two buttons, and clicking on another element of which will navigate user to the favorites screen.
 
-## Step 3: Modifying your App
+### Single currency screen
 
-Now that you have successfully run the app, let's modify it.
+The new screen displays the name, full name, symbol, and an enlarged image of the currency.
+Information on the value of the coin in US dollars (by default) has been added, with the option to select another currency, after which the new price will be displayed.
+At the bottom of the screen, there are texts with links to the privacy policy and terms of use.
 
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
+### Favorites screen
 
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
+The Favorites screen contains a list of selected crypto coins with the option to remove them from the list.
 
-## Congratulations! :tada:
+## Offline mode
 
-You've successfully run and modified your React Native App. :partying_face:
+The offline mode was provided as follows: when crypto coins are initially downloaded, they are saved to the local storage. After that, when there is no Internet connection, the list of coins is downloaded from the local storage instead of the API.
 
-### Now what?
+## Additional features or libraries
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
+A large number of contexts were used: internet connection, application language, toast and others related to tsx logic.
 
-# Troubleshooting
+The i18n library for multilingualism was used.
 
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+The `@react-navigation/bottom-tabs` and `@react-navigation/native-stack` navigation were used.
 
-# Learn More
+Custom hooks were used to work with data.
 
-To learn more about React Native, take a look at the following resources:
+Internet connection info was implemented using animated view.
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+Icons were implemented using svg files.
+
+Sentry has been added for bug tracking
